@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="authorisationRouter" class="com.grahamlea.glissmetrics.exampleapplication.services.AuthorisationRouterImpl">
+        <property name="remoteServices">
+            <list>
+                <ref bean="remote1"/>
+                <ref bean="remote2"/>
+                <ref bean="remote3"/>
+            </list>
+        </property>
+        <property name="distributionRates">
+            <list>
+                <value>0.5</value>
+                <value>0.2</value>
+                <value>0.2</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

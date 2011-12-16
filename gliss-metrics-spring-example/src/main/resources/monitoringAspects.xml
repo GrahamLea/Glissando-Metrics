@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <bean id="serviceUnavailableCountAspect"  class="com.grahamlea.glissmetrics.aspects.ExceptionCountingAspect">
+        <constructor-arg value="com.grahamlea.glissmetrics.exampleapplication.services.NoServiceAvailableException"/>
+        <constructor-arg ref="serviceUnavailableMonitor"/>
+    </bean>
+
+    <bean id="remote1DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote1DeclineMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
+    </bean>
+    <bean id="remote2DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote2DeclineMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
+    </bean>
+    <bean id="remote3DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote3DeclineMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
+    </bean>
+
+    <bean id="remote1TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote1TimeoutMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this == null"/>
+    </bean>
+    <bean id="remote2TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote2TimeoutMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this == null"/>
+    </bean>
+    <bean id="remote3TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+        <property name="rateMonitor" ref="remote3TimeoutMonitor"/>
+        <property name="countingPredicateSpelExpression" value="#this == null"/>
+    </bean>
+
+    <aop:config>
+
+        <aop:aspect id="routerServiceUnavailableMonitorAspect" ref="serviceUnavailableCountAspect">
+            <aop:after-throwing method="exceptionThrown" pointcut="bean(authorisationRouter) &amp;&amp; execution(* *.authorise(..))" throwing="e"/>
+        </aop:aspect>
+
+        <aop:aspect id="remote1CountAdvice" ref="remote1CallMonitor">
+            <aop:before pointcut="bean(remote1) &amp;&amp; execution(* *.authorise(..))" method="increment" />
+        </aop:aspect>
+        <aop:aspect id="remote2CountAdvice" ref="remote2CallMonitor">
+            <aop:before pointcut="bean(remote2) &amp;&amp; execution(* *.authorise(..))" method="increment" />
+        </aop:aspect>
+        <aop:aspect id="remote3CountAdvice" ref="remote3CallMonitor">
+            <aop:before pointcut="bean(remote3) &amp;&amp; execution(* *.authorise(..))" method="increment" />
+        </aop:aspect>
+
+        <aop:aspect id="remote1DeclineCountAdvice" ref="remote1DeclineCountAspect">
+            <aop:after-returning pointcut="bean(remote1) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+        <aop:aspect id="remote2DeclineCountAdvice" ref="remote2DeclineCountAspect">
+            <aop:after-returning pointcut="bean(remote2) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+        <aop:aspect id="remote3DeclineCountAdvice" ref="remote3DeclineCountAspect">
+            <aop:after-returning pointcut="bean(remote3) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+
+        <aop:aspect id="remote1TimeoutCountAdvice" ref="remote1TimeoutCountAspect">
+            <aop:after-returning pointcut="bean(remote1) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+        <aop:aspect id="remote2TimeoutCountAdvice" ref="remote2TimeoutCountAspect">
+            <aop:after-returning pointcut="bean(remote2) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+        <aop:aspect id="remote3TimeoutCountAdvice" ref="remote3TimeoutCountAspect">
+            <aop:after-returning pointcut="bean(remote3) &amp;&amp; execution(* *.authorise(..))" method="valueReturned" returning="returnValue"/>
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>
