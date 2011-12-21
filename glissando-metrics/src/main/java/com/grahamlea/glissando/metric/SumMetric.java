@@ -3,7 +3,7 @@ package com.grahamlea.glissando.metric;
 import com.grahamlea.glissando.MonitoringPeriod;
 import com.grahamlea.glissando.MonitoringSampleFrequency;
 import com.grahamlea.glissando.MonitoringThreads;
-import com.grahamlea.glissando.monitor.RateMonitor;
+import com.grahamlea.glissando.metric.monitor.RateMonitor;
 
 import java.util.*;
 

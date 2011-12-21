@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="remoteServiceRateMonitorFactory" class="com.grahamlea.glissando.monitor.RateMonitorFactory">
+    <bean id="remoteServiceRateMonitorFactory" class="com.grahamlea.glissando.metric.monitor.RateMonitorFactory">
         <property name="monitoringPeriod" value="1 minute"/>
         <property name="sampleFrequency" value="5 seconds"/>
     </bean>

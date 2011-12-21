@@ -1,4 +1,4 @@
-package com.grahamlea.glissando.monitor;
+package com.grahamlea.glissando.metric.monitor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

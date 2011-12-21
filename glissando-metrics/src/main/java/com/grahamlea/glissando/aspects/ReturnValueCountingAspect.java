@@ -1,6 +1,6 @@
 package com.grahamlea.glissando.aspects;
 
-import com.grahamlea.glissando.monitor.RateMonitor;
+import com.grahamlea.glissando.metric.monitor.RateMonitor;
 
 public abstract class ReturnValueCountingAspect {
 

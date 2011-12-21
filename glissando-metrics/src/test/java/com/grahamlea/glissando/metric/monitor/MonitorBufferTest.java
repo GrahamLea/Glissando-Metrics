@@ -1,4 +1,4 @@
-package com.grahamlea.glissando.monitor;
+package com.grahamlea.glissando.metric.monitor;
 
 import org.junit.Test;
 
