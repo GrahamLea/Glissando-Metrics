@@ -17,6 +17,7 @@
 
     <properties>
         <spring.version>3.0.6.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <repositories>
@@ -129,7 +130,6 @@
                 <version>2.5</version>
                 <configuration>
                     <outputDirectory />
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
