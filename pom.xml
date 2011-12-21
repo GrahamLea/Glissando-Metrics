@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.grahamlea.glissmetrics</groupId>
-    <artifactId>gliss-metrics-parent</artifactId>
+    <groupId>com.grahamlea.glissando</groupId>
+    <artifactId>glissando-parent</artifactId>
     <version>0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>gliss-metrics</module>
-        <module>gliss-metrics-spring</module>
-        <module>gliss-metrics-spring-example</module>
+        <module>glissando-metrics</module>
+        <module>glissando-spring</module>
+        <module>glissando-spring-example</module>
     </modules>
 
     <properties>
@@ -35,14 +35,14 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.grahamlea.glissmetrics</groupId>
-                <artifactId>gliss-metrics</artifactId>
+                <groupId>com.grahamlea.glissando</groupId>
+                <artifactId>glissando-metrics</artifactId>
                 <version>${project.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
-                <groupId>com.grahamlea.glissmetrics</groupId>
-                <artifactId>gliss-metrics-spring</artifactId>
+                <groupId>com.grahamlea.glissando</groupId>
+                <artifactId>glissando-spring</artifactId>
                 <version>${project.version}</version>
                 <scope>compile</scope>
             </dependency>

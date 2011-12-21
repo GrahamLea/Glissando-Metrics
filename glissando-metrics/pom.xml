@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.grahamlea.glissmetrics</groupId>
-        <artifactId>gliss-metrics-parent</artifactId>
+        <groupId>com.grahamlea.glissando</groupId>
+        <artifactId>glissando-parent</artifactId>
         <version>0.2-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
-    <groupId>com.grahamlea.glissmetrics</groupId>
-    <artifactId>gliss-metrics</artifactId>
+    <groupId>com.grahamlea.glissando</groupId>
+    <artifactId>glissando-metrics</artifactId>
     <version>0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 

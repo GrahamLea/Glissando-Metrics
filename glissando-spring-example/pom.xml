@@ -5,23 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.grahamlea.glissmetrics</groupId>
-        <artifactId>gliss-metrics-parent</artifactId>
+        <groupId>com.grahamlea.glissando</groupId>
+        <artifactId>glissando-parent</artifactId>
         <version>0.2-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
-    <groupId>com.grahamlea.glissmetrics</groupId>
-    <artifactId>gliss-metrics-spring-example</artifactId>
+    <groupId>com.grahamlea.glissando</groupId>
+    <artifactId>glissando-spring-example</artifactId>
     <version>0.2-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>com.grahamlea.glissmetrics</groupId>
-            <artifactId>gliss-metrics</artifactId>
+            <groupId>com.grahamlea.glissando</groupId>
+            <artifactId>glissando-metrics</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.grahamlea.glissmetrics</groupId>
-            <artifactId>gliss-metrics-spring</artifactId>
+            <groupId>com.grahamlea.glissando</groupId>
+            <artifactId>glissando-spring</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
