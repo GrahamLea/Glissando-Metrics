@@ -6,33 +6,33 @@
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-    <bean id="serviceUnavailableCountAspect"  class="com.grahamlea.glissmetrics.aspects.ExceptionCountingAspect">
-        <constructor-arg value="com.grahamlea.glissmetrics.exampleapplication.services.NoServiceAvailableException"/>
+    <bean id="serviceUnavailableCountAspect"  class="com.grahamlea.glissando.aspects.ExceptionCountingAspect">
+        <constructor-arg value="com.grahamlea.glissando.exampleapplication.services.NoServiceAvailableException"/>
         <constructor-arg ref="serviceUnavailableMonitor"/>
     </bean>
 
-    <bean id="remote1DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote1DeclineCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote1DeclineMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
     </bean>
-    <bean id="remote2DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote2DeclineCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote2DeclineMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
     </bean>
-    <bean id="remote3DeclineCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote3DeclineCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote3DeclineMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this != null and resultCode == ResultCode.Declined"/>
     </bean>
 
-    <bean id="remote1TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote1TimeoutCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote1TimeoutMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this == null"/>
     </bean>
-    <bean id="remote2TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote2TimeoutCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote2TimeoutMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this == null"/>
     </bean>
-    <bean id="remote3TimeoutCountAspect"  class="com.grahamlea.glissmetrics.aspects.spring.SpelExpressionReturnValueCountingAspect">
+    <bean id="remote3TimeoutCountAspect"  class="com.grahamlea.glissando.aspects.spring.SpelExpressionReturnValueCountingAspect">
         <property name="rateMonitor" ref="remote3TimeoutMonitor"/>
         <property name="countingPredicateSpelExpression" value="#this == null"/>
     </bean>

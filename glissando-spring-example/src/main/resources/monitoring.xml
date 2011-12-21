@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="remoteServiceRateMonitorFactory" class="com.grahamlea.glissmetrics.monitor.RateMonitorFactory">
+    <bean id="remoteServiceRateMonitorFactory" class="com.grahamlea.glissando.monitor.RateMonitorFactory">
         <property name="monitoringPeriod" value="1 minute"/>
         <property name="sampleFrequency" value="5 seconds"/>
     </bean>
@@ -20,13 +20,13 @@
         <constructor-arg value="remote1: Timeouts"/>
     </bean>
 
-    <bean id="remote1DeclineRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote1DeclineRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote1: Decline Rate"/>
         <constructor-arg ref="remote1DeclineMonitor"/>
         <constructor-arg ref="remote1CallMonitor"/>
     </bean>
 
-    <bean id="remote1TimoutRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote1TimoutRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote1: Timeout Rate"/>
         <constructor-arg ref="remote1TimeoutMonitor"/>
         <constructor-arg ref="remote1CallMonitor"/>
@@ -46,13 +46,13 @@
         <constructor-arg value="remote2: Timeouts"/>
     </bean>
 
-    <bean id="remote2DeclineRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote2DeclineRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote2: Decline Rate"/>
         <constructor-arg ref="remote2DeclineMonitor"/>
         <constructor-arg ref="remote2CallMonitor"/>
     </bean>
 
-    <bean id="remote2TimeoutRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote2TimeoutRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote2: Timeout Rate"/>
         <constructor-arg ref="remote2TimeoutMonitor"/>
         <constructor-arg ref="remote2CallMonitor"/>
@@ -72,13 +72,13 @@
         <constructor-arg value="remote3: Timeouts"/>
     </bean>
 
-    <bean id="remote3DeclineRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote3DeclineRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote3: Decline Rate"/>
         <constructor-arg ref="remote3DeclineMonitor"/>
         <constructor-arg ref="remote3CallMonitor"/>
     </bean>
 
-    <bean id="remote3TimeoutRatio" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote3TimeoutRatio" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote3: Timeout Rate"/>
         <constructor-arg ref="remote3TimeoutMonitor"/>
         <constructor-arg ref="remote3CallMonitor"/>
@@ -92,7 +92,7 @@
 
 
 
-    <bean id="totalRequestsMetric" class="com.grahamlea.glissmetrics.metric.SumMetric">
+    <bean id="totalRequestsMetric" class="com.grahamlea.glissando.metric.SumMetric">
         <constructor-arg value="Total Calls"/>
         <constructor-arg>
             <list>
@@ -104,19 +104,19 @@
         </constructor-arg>
     </bean>
 
-    <bean id="remote1LoadShare" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote1LoadShare" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote1: Load Share"/>
         <constructor-arg ref="remote1CallMonitor"/>
         <constructor-arg ref="totalRequestsMetric"/>
     </bean>
 
-    <bean id="remote2LoadShare" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote2LoadShare" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote2: Load Share"/>
         <constructor-arg ref="remote2CallMonitor"/>
         <constructor-arg ref="totalRequestsMetric"/>
     </bean>
 
-    <bean id="remote3LoadShare" class="com.grahamlea.glissmetrics.metric.RatioMetric">
+    <bean id="remote3LoadShare" class="com.grahamlea.glissando.metric.RatioMetric">
         <constructor-arg value="remote3: Load Share"/>
         <constructor-arg ref="remote3CallMonitor"/>
         <constructor-arg ref="totalRequestsMetric"/>

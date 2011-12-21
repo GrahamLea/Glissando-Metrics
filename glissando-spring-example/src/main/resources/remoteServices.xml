@@ -3,17 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="remote1" class="com.grahamlea.glissmetrics.exampleapplication.services.RemoteAuthorisationServiceProxy">
+    <bean id="remote1" class="com.grahamlea.glissando.exampleapplication.services.RemoteAuthorisationServiceProxy">
         <property name="failureRate" value="0.1"/>
         <property name="timeoutRate" value="0.02"/>
     </bean>
 
-    <bean id="remote2" class="com.grahamlea.glissmetrics.exampleapplication.services.RemoteAuthorisationServiceProxy">
+    <bean id="remote2" class="com.grahamlea.glissando.exampleapplication.services.RemoteAuthorisationServiceProxy">
         <property name="failureRate" value="0.1"/>
         <property name="timeoutRate" value="0.2"/>
     </bean>
 
-    <bean id="remote3" class="com.grahamlea.glissmetrics.exampleapplication.services.RemoteAuthorisationServiceProxy">
+    <bean id="remote3" class="com.grahamlea.glissando.exampleapplication.services.RemoteAuthorisationServiceProxy">
         <property name="failureRate" value="0.25"/>
         <property name="timeoutRate" value="0.1"/>
     </bean>
