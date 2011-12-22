@@ -5,7 +5,11 @@
 
     <bean id="remoteServiceRateMonitorFactory" class="com.grahamlea.glissando.metric.monitor.RateMonitorFactory">
         <property name="monitoringPeriod" value="1 minute"/>
-        <property name="sampleFrequency" value="5 seconds"/>
+        <property name="monitorSequencer">
+            <bean class="com.grahamlea.glissando.metric.monitor.SingleThreadMonitorSequencer">
+                <constructor-arg value="5 seconds"/>
+            </bean>
+        </property>
     </bean>
 
     <bean id="remote1CallMonitor" factory-bean="remoteServiceRateMonitorFactory" factory-method="newInstance">

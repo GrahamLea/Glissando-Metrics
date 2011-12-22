@@ -1,8 +1,10 @@
 package com.grahamlea.glissando.metric;
 
 import com.grahamlea.glissando.MonitoringSampleFrequency;
-import com.grahamlea.glissando.MonitoringThreads;
+import com.grahamlea.glissando.metric.monitor.Monitor;
+import com.grahamlea.glissando.metric.monitor.MonitorWatcher;
 
+import java.util.List;
 import java.util.Set;
 
 import static com.grahamlea.glissando.MonitoringSampleFrequency.union;
@@ -23,24 +25,25 @@ import static com.grahamlea.glissando.MonitoringSampleFrequency.union;
  * Once values have been collected from the above monitors, the toString() of the timeoutRatioMetric
  * would be something like: "timeouts/transactions: 0.015"
  */
-public class RatioMetric implements Metric {
+public class RatioMetric implements Metric, MonitorWatcher {
 
     private final String name;
-    private final Metric dividend;
-    private final Metric divisor;
+    private final WatchableMetric dividend;
+    private final WatchableMetric divisor;
 
     private volatile Double currentValue = null;
 
-    public RatioMetric(Metric dividend, Metric divisor) {
+    public RatioMetric(WatchableMetric dividend, WatchableMetric divisor) {
         this(dividend.getName() + " / " + divisor, dividend, divisor);
     }
 
-    public RatioMetric(String name, Metric dividend, Metric divisor) {
+    public RatioMetric(String name, WatchableMetric dividend, WatchableMetric divisor) {
         this.name = name;
         this.dividend = dividend;
         this.divisor = divisor;
 
-        MonitoringThreads.scheduleAtFixedRates(new Updater(), union(dividend.getSamplingFrequencies(), divisor.getSamplingFrequencies()));
+        dividend.addWatcher(this);
+        divisor.addWatcher(this);
     }
 
     public String getName() {
@@ -64,9 +67,8 @@ public class RatioMetric implements Metric {
         return getName() + ": " + getValue();
     }
 
-    private final class Updater implements Runnable {
-        public void run() {
-            currentValue = dividend.getValue() / divisor.getValue();
-        }
+    @Override
+    public void monitorsRolled(List<Monitor> monitors) {
+        currentValue = dividend.getValue() / divisor.getValue();
     }
 }

@@ -2,7 +2,6 @@ package com.grahamlea.glissando.metric;
 
 import com.grahamlea.glissando.MonitoringPeriod;
 import com.grahamlea.glissando.MonitoringSampleFrequency;
-import com.grahamlea.glissando.MonitoringThreads;
 import com.grahamlea.glissando.metric.monitor.RateMonitor;
 
 import java.util.*;
@@ -19,7 +18,8 @@ import java.util.*;
  * </code>
  */
 public class SumMetric implements Metric {
-
+    //TODO: Needs to implement WatchableMetric in order for ExampleApplication to work
+    //TODO: Test!
     private final String name;
     private final List<Metric> metrics;
     private final Set<MonitoringSampleFrequency> frequencies;
@@ -51,7 +51,7 @@ public class SumMetric implements Metric {
             toStringSuffix = "";
         }
 
-        MonitoringThreads.scheduleAtFixedRates(new Updater(), getSamplingFrequencies());
+//        MonitoringThreads.scheduleAtFixedRates(new Updater(), getSamplingFrequencies());
     }
 
     private void reportDifferingMonitoringPeriods(Set<MonitoringPeriod> monitoringPeriods) {

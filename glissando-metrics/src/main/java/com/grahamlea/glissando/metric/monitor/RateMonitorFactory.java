@@ -1,7 +1,6 @@
 package com.grahamlea.glissando.metric.monitor;
 
 import com.grahamlea.glissando.MonitoringPeriod;
-import com.grahamlea.glissando.MonitoringSampleFrequency;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,17 +13,17 @@ import java.util.concurrent.TimeUnit;
 public class RateMonitorFactory {
 
     private MonitoringPeriod monitoringPeriod = new MonitoringPeriod(1, TimeUnit.MINUTES);
-    private MonitoringSampleFrequency sampleFrequency = new MonitoringSampleFrequency(5, TimeUnit.SECONDS);
+    private MonitorSequencer monitorSequencer;
 
     public RateMonitor newInstance(String name) {
-        return new RateMonitor(name, monitoringPeriod, sampleFrequency);
+        return new RateMonitor(name, monitoringPeriod, monitorSequencer);
     }
 
     public void setMonitoringPeriod(MonitoringPeriod monitoringPeriod) {
         this.monitoringPeriod = monitoringPeriod;
     }
 
-    public void setSampleFrequency(MonitoringSampleFrequency sampleFrequency) {
-        this.sampleFrequency = sampleFrequency;
+    public void setMonitorSequencer(MonitorSequencer monitorSequencer) {
+        this.monitorSequencer = monitorSequencer;
     }
 }
